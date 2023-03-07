@@ -1,0 +1,128 @@
+swagger: '2.0'
+info:
+  title: Minha API
+  version: 1.0.0
+paths:
+  /nqueen/{numberQueens}:
+    get:
+      tags: 
+      - Algoritmos
+      summary: Retorna o resultado da implementação do algoritmo N-Queen
+      operationId: nqueen
+      parameters:
+        - name: numberQueens
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: OK
+          schema:
+            type: object
+            properties:
+              mensagem:
+                type: string
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /sudoku/{board}:
+    get:
+      tags: 
+      - Algoritmos    
+      summary: Retorna o resultado da implementação do algoritmo Sudoku
+      operationId: sudoku
+      parameters:
+        - name: board
+          in: path
+          required: true
+          schema:
+            type: array
+            items:
+              type: array
+              items:
+                type: integer
+                minimum: 0
+                maximum: 9
+                nullable: true
+            minItems: 9
+            maxItems: 9
+      responses:
+        200:
+          description: Sudoku resolvido com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  solution:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: integer
+                        minimum: 0
+                        maximum: 9
+      consumes:
+        - application/json
+      produces:
+        - application/json
+  /sudokuGenerator:
+    get:
+      tags: 
+      - Algoritmos    
+      summary: Retorna o resultado da implementação do algoritmo gerador de Sudoku
+      operationId: sudokuGenerator
+      responses:
+        200:
+          description: Sudoku resolvido com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  solution:
+                    type: array
+                    items:
+                      type: array
+                      items:
+                        type: integer
+                        minimum: 0
+                        maximum: 9
+      consumes:
+        - application/json
+      produces:
+        - application/json        
+  /maze/{maze}:
+    get:
+      tags: 
+      - Algoritmos 
+      summary: Retorna o resultado da implementação do algoritmo Maze 
+      operationId: maze
+      parameters:
+        - name: maze
+          in: path         
+          required: true
+          schema:
+            type: array
+            items:
+              type: array
+              items:
+                type: boolean
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: integer
+      consumes:
+        - application/json
+      produces:
+        - application/json
