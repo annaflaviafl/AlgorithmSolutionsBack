@@ -14,19 +14,19 @@ export class NQueenSolver {
 
     private placeQueens(row: number): boolean {
         if (row === this.size) {
-            return true; // todas as rainhas foram colocadas
+            return true;
         }
 
         for (let col = 0; col < this.size; col++) {
             if (this.isSafe(row, col)) {
-                this.board[row] = col; // coloca a rainha na posição (row, col)
+                this.board[row] = col;
                 if (this.placeQueens(row + 1)) {
-                    return true; // solução encontrada
+                    return true;
                 }
             }
         }
 
-        return false; // não foi possível colocar uma rainha nesta linha
+        return false;
     }
 
     private isSafe(row: number, col: number): boolean {
@@ -35,9 +35,9 @@ export class NQueenSolver {
             const sameColumn = queenCol === col;
             const diagonal = queenCol - col === i - row || queenCol - col === row - i;
             if (sameColumn || diagonal) {
-                return false; // encontrou outra rainha na mesma coluna ou diagonal
+                return false;
             }
         }
-        return true; // não há rainhas ameaçando esta posição
+        return true;
     }
 }
